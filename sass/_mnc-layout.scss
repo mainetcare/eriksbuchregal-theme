@@ -1,0 +1,19 @@
+.mnc-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.mnc-col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.mnc-form2col {
+  .wpcf7 .wpcf7-form-control-wrap {
+    width:96%;
+  }
+}

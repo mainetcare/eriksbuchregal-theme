@@ -1,0 +1,202 @@
+body {
+  background-color: transparent;
+}
+
+.fl-logo-img {
+
+}
+
+.mi-logotext {
+
+}
+
+// hover menu underline:
+.fl-page-nav-right .fl-page-nav-wrap .navbar-nav > li > a:hover {
+  border-top: #222 2px solid;
+}
+
+.fl-page-nav-right .fl-page-nav-wrap .navbar-nav > li > a {
+  border-top: #FFF 2px solid;
+}
+
+.mi-uppercase {
+  text-transform: uppercase;
+}
+
+.mi-hide {
+  @include hide_from_dom;
+}
+
+// NAVIGATION:
+.mi_nav_level2 > a {
+  text-transform: uppercase !important;
+  color: #222 !important;
+  &::before {
+    content: "" !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .fl-page-nav ul.sub-menu {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 5px;
+    text-indent: -7px;
+  }
+  .fl-page-nav ul.sub-menu li {
+    max-width: 300px;
+  }
+  .fl-page-nav ul.sub-menu li a {
+    padding: 2px 15px 3px 15px;
+    font-size: 12px;
+  }
+  .fl-page-nav ul.sub-menu li a:before {
+    content: "- ";
+  }
+  .mm_sep {
+    padding-bottom: 7px;
+    //border-bottom:1px solid rgb(204, 207, 222) !important;
+    border-bottom: 1px dashed #DDD !important;
+    margin-bottom: 7px;
+  }
+}
+
+.mi-text-shadow-black {
+  text-shadow: 2px 2px 2px #000000;
+  .uabb-icon {
+    text-shadow: none;
+  }
+}
+
+.mi-text-shadow-light {
+  text-shadow: 1px 1px 1px #222222;
+  .uabb-icon {
+    text-shadow: none;
+  }
+}
+
+.mi-contact {
+  label {
+    width: 100%;
+  }
+  input[type='text'], textarea {
+    width: 100% !important;
+  }
+}
+
+.fl-page-nav-right .fl-page-header-wrap {
+  border-bottom: 0 !important;
+}
+
+.fl-page-nav-center.fl-page-header-wrap {
+  border-bottom: 0 !important;
+}
+
+.mi-datatable {
+  td {
+    padding: 3px 0 2px 0;
+  }
+  td.col0 {
+    padding-right: 10px;
+  }
+}
+
+.fl-page-header .fl-page-nav-wrap {
+  border-bottom: 0;
+  border-top: 0;
+}
+
+.mi-logo {
+  position: relative;
+  display:block;
+  margin:0 auto;
+  span {
+    font-size: emCalc(58);
+    @include bp(mobile) {
+      font-size:emCalc(35);
+    }
+    text-transform: uppercase;
+    color: #8d732d;
+    text-shadow: 2px 2px 2px #FFFFFF;
+  }
+  .mi-fw {
+    color:$color_main;
+  }
+}
+
+.mi-logo-overlay {
+  width:100%;
+  background-color:white;
+  opacity: 0.9;
+  // width:100%;
+  height:100%;
+  margin:0 auto;
+  position:absolute;
+  border-radius: 3px;
+  //border:1px solid red;
+}
+
+.mi-description {
+  font-size: 12px;
+}
+
+.mi-sp-attr {
+  font-size:0.8em;
+  margin:0 0 10px 0;
+}
+
+
+
+.mi-input {
+  label {
+    font-weight:normal;
+    font-size:0.9em;
+    width:100%;
+  }
+  textarea.mediumheight {
+    max-height:100px;
+  }
+}
+
+footer {
+  font-size:14px;
+}
+
+.fl-page-nav-search form {
+  border-top:1px solid #444;
+  background-color:#FFF;
+}
+.fl-page-nav-search form input.fl-search-input {
+  background-color: #FFF;
+  border-color: #EEE;
+  color: #333333 !important;
+}
+
+.handball-inside {
+  max-width:200px;
+  max-height:150px;
+  border:1px solid red;
+  overflow: hidden;
+  position: absolute;
+  right:0px;
+  bottom:10px;
+}
+
+.fl-sidebar-right {
+  padding-left: 20px;
+}
+
+
+.fl-page-nav {
+  @include bp(mobile) {
+    background-color:#FFF;
+  }
+}
+
+
+
+
+
+
+
+

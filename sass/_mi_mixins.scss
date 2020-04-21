@@ -1,0 +1,246 @@
+@mixin nth-children($points...) {
+  @each $point in $points {
+    &:nth-child(#{$point}) {
+      @content;
+    }
+  }
+}
+
+@mixin hide_from_dom {
+  display: none !important;
+  visibility: hidden;
+}
+
+@mixin hide_from_screen {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  &.focusable {
+    &:active, &:focus {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      width: auto;
+    }
+  }
+}
+
+@mixin clearfix {
+  &:before {
+    content: "";
+    display: table;
+  }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  zoom: 1;
+}
+
+@mixin placeholder {
+  &:-webkit-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &:-ms-placeholder {
+    @content;
+  }
+  &:-o-placeholder {
+    @content;
+  }
+  &:placeholder {
+    @content;
+  }
+}
+
+@mixin holy_grail($layout_left_width, $layout_right_width) {
+  body {
+    min-width: 2*$layout_left_width + $layout_right_width; /* 2x LC width + RC width */
+  }
+  #container {
+    padding-left: $layout_left_width; /* LC width */
+    padding-right: $layout_right_width; /* RC width */
+  }
+  #main, #left, #right {
+    position: relative;
+    float: left;
+  }
+  #main {
+    width: 100%;
+  }
+  #left {
+    width: $layout_left_width; /* LC width */
+    right: $layout_left_width; /* LC width */
+    margin-left: -100%;
+  }
+  #right {
+    width: $layout_right_width; /* RC width */
+    margin-right: $layout_right_width; /* RC width */
+  }
+  #footer {
+    clear: both;
+  }
+  /*** IE6 Fix ***/
+  * html #left {
+    left: $layout_right_width; /* RC width */
+  }
+}
+
+$screen-lg-min: 1200px;
+
+$screen-md-min: 1024px;
+$screen-md-max: $screen-lg-min - 1;
+
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+
+$screen-xs-max: $screen-sm-min - 1;
+
+@mixin bp($point) {
+  @if $point == desktop {
+    @media (min-width: $screen-lg-min) {
+      @content;
+    }
+  } @else if $point == laptop {
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      @content;
+    }
+  } @else if $point == tablet {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      @content;
+    }
+  } @else if $point == mobile {
+    @media (max-width: $screen-xs-max) {
+      @content;
+    }
+  } @else if $point == larger_mobile {
+    @media (min-width: $screen-sm-min) {
+      @content;
+    }
+  } @else if $point == larger_tablet {
+    @media (min-width: $screen-md-min) {
+      @content;
+    }
+  } @else if $point == smaller_desktop {
+    @media (max-width: $screen-md-max) {
+      @content;
+    }
+  } @else if $point == smaller_laptop {
+    @media (max-width: $screen-sm-max) {
+      @content;
+    }
+  }
+}
+
+@mixin top_link($color) {
+  display: none;
+  right: 10px;
+  position: fixed;
+  width: 150px;
+  margin: 0 auto;
+  text-align: center;
+  bottom: 5px;
+  color: $color;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid $color;
+  border-radius: 5px;
+  background: lighten($color, 55%);
+  padding: 5px 10px;
+}
+
+@mixin reset_links() {
+  a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: $link-color;
+  }
+  a:hover {
+    color: darken($link-color, 10%);
+  }
+}
+
+@mixin mi_clearfix_brute_force() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+@mixin mi_clearfix_sass_example {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & {
+    height: 1px
+  }
+}
+
+@mixin mi_clearfix {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@mixin mi_clearfix_older {
+  &:after {
+    content: " ";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+$em-base: 16 !default;
+// It strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// Converts "px" to "em" using the ($)em-base
+@function convert-to-em($value) {
+  $value: strip-unit($value) / strip-unit($em-base) * 1em;
+  @if ($value == 0em) {
+    $value: 0;
+  }
+  // Turn 0em into 0
+  @return $value;
+}
+
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#)
+// Just enter the number, no need to mention "px"
+@function emCalc($values...) {
+  $max: length($values); // Get the total number of parameters passed
+
+  // If there is only 1 parameter, then return it as an integer.
+  // This is done because a list can't be multiplied or divided even if it contains a single value
+  @if $max == 1 {
+    @return convert-to-em(nth($values, 1));
+  }
+
+  $emValues: (); // This will eventually store the converted $values in a list
+  @for $i from 1 through $max {
+    $emValues: append($emValues, convert-to-em(nth($values, $i)));
+  }
+  @return $emValues;
+}

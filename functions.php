@@ -39,92 +39,6 @@ add_shortcode( 'mi_show_product_attributes', function ( $atts ) {
 
 } );
 
-add_shortcode( 'mi_list_all_books', function ( $atts ) {
-//	$atts = shortcode_atts( array(
-//		'id' => 'false',
-//	), $atts );
-
-	$args     = array(
-		'post_type'      => 'product',
-		'posts_per_page' => - 1,
-		'meta_query'     => array(
-			'relation' => 'OR',
-			array(
-				'key'     => 'no_booklisting',
-				'compare' => 'NOT EXISTS', // works!
-				'value'   => '' // This is ignored, but is necessary...
-			),
-			array(
-				'key'   => 'no_booklisting',
-				'value' => '0'
-			)
-		),
-	);
-	$loop     = new WP_Query( $args );
-	$arrBooks = [];
-	if ( $loop->have_posts() ) {
-		while ( $loop->have_posts() ) : $loop->the_post();
-			ob_start();
-			get_template_part( 'mi', 'product' );
-			$arrBooks[] = ob_get_contents();
-			ob_end_clean();
-		endwhile;
-		wp_reset_postdata();
-		$li_part = implode( "\n", $arrBooks );
-
-		return '<div class="mi-products">' . $li_part . '</div>';
-	} else {
-		wp_reset_postdata();
-
-		return ( '' );
-	}
-} );
-
-add_shortcode( 'mi_akz', function ( $atts ) {
-	$atts   = shortcode_atts( array(
-		'format' => 'inline',
-	), $atts );
-	$format = $atts['format'];
-	$a[]    = 'Verlag Eriks Buchregal';
-	// $a[]    = '';
-	$a[]    = 'Schützenstraße 4';
-	$a[]    = 'D-25548 Kellinghusen';
-	$a[]    = '<a href="tel:+494882295697">Tel:&nbsp;+49&nbsp;(0)&nbsp;4822.3631030</a>';
-	$a[]    = '<a href="tel:+491725612780">Mobil:&nbsp;+49&nbsp;(0)&nbsp;172.5612780</a>';
-	$a[]    = '<a href="mailto:erik.eggers@gmx.de">E-Mail:&nbsp;erik.eggers@gmx.de</a>';
-	if ( $format == 'inline' ) {
-		return implode( ', ', $a );
-	} elseif ( $format == 'block' ) {
-		return implode( '<br>', $a );
-	} else {
-		return implode( ' ', $a );
-	}
-} );
-
-add_shortcode( 'mi_bv', function ( $atts ) {
-	$atts   = shortcode_atts( array(
-		'format' => 'block',
-	), $atts );
-	$format = $atts['format'];
-	$a[]    = 'Verlag Eriks Buchregal';
-	$a[]    = 'Volksbank Wrist eG';
-	$a[]    = 'IBAN DE64 2229 0031 0034 2607 14';
-	$a[]    = 'BIC GENODEF1VIT';
-	if ( $format == 'inline' ) {
-		return implode( ', ', $a );
-	} elseif ( $format == 'block' ) {
-		return implode( '<br>', $a );
-	} else {
-		return implode( ' ', $a );
-	}
-} );
-
-
-//add_filter( 'woocommerce_related_products_args', function ( $args ) {
-//	return array();
-//}, 10 );
-//
-
 
 // Don't show the excerpt in the single-product page:
 function woocommerce_template_single_excerpt() {
@@ -200,4 +114,19 @@ function woocommerce_output_related_products() {
 		'orderby'        => 'date'
 	]);
 }
+
+add_filter( 'get_the_archive_title', function ($title) {
+	if ( is_category() ) {
+		$title = single_cat_title( '', false );
+	} elseif ( is_tag() ) {
+		$title = single_tag_title( '', false );
+	} elseif ( is_author() ) {
+		$title = '<span class="vcard">' . get_the_author() . '</span>' ;
+	} elseif ( is_tax() ) { //for custom post types
+		$title = sprintf( __( '%1$s' ), single_term_title( '', false ) );
+	} elseif (is_post_type_archive()) {
+		$title = post_type_archive_title( '', false );
+	}
+	return $title;
+});
 

@@ -25,17 +25,27 @@ function child_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
 
 
-add_shortcode( 'mi_show_product_attributes', function ( $atts ) {
-
+add_shortcode( 'mnc-product-attributes', function ( $atts ) {
+	global $post;
 	$atts          = shortcode_atts( array(
 		'id' => '0',
 	), $atts, 'mi_show_product_attributes' );
-	$id            = $atts['id'];
+	if(isset($post) && $post->post_type == 'product') {
+		$id = $post->ID;
+	} else {
+		$id            = $atts['id'];
+	}
 	$_pf           = new WC_Product_Factory();
-	$_product      = $_pf->get_product( $id );
-	$arrAttributes = $_product->get_attributes();
+	$product      = $_pf->get_product( $id );
+	$keys = [
 
-	return '<p>hello</p>';
+	];
+	$author = '';
+	if($product) {
+		$product->get_attributes();
+		$author = $product->get_attribute( 'pa_autor' );
+	}
+	return $author;
 
 } );
 
@@ -63,6 +73,26 @@ function mi_show_attributes() {
 	$atts = implode( '<br>', $arrAtt );
 	echo( '<div class="mi-sp-attr">' . $atts . '</div>' );
 }
+
+
+add_action('astra_woo_shop_title_after', function() {
+	global $post;
+	$_pf           = new WC_Product_Factory();
+	if($post && $post->post_type == 'product') {
+		$product      = $_pf->get_product( $post->ID );
+		// $product->get_attributes();
+		$author = $product->get_attribute( 'pa_autor' );
+		echo('<div class="mnc-author">'.$author.'</div>');
+	}
+});
+
+//add_action('woocommerce_before_shop_loop_item_title', function() {
+//	echo( 'ISE ISE ISE');
+//});
+//
+//add_action('woocommerce_shop_loop_item_title', function() {
+//	echo( '!Moin ick bin Stephan!');
+//});
 
 // Custom TAB below the summary:
 
@@ -129,4 +159,6 @@ add_filter( 'get_the_archive_title', function ($title) {
 	}
 	return $title;
 });
+
+
 

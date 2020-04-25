@@ -25,28 +25,40 @@ function child_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
 
 
+/**
+ * Liefert eine Liste mit definierten eigenen Produkt-Attributen
+ * Jedes Attribut wird in einem DIV Container zurück gegeben
+ * z.B. Autor, ISBN, Seitenzahl, usw.
+ * Beispiel [mnc-product-atttributes atts="autor,isbn"]
+ *
+ */
 add_shortcode( 'mnc-product-attributes', function ( $atts ) {
 	global $post;
 	$atts          = shortcode_atts( array(
 		'id' => '0',
-	), $atts, 'mi_show_product_attributes' );
+		'atts' => ''
+	), $atts, 'mnc-product-attributes' );
+	$id = $atts['id'];
+	$keys = explode(',', $atts['atts']);
+	if(count($keys) == 0) {
+		return '';
+	}
 	if(isset($post) && $post->post_type == 'product') {
 		$id = $post->ID;
-	} else {
-		$id            = $atts['id'];
 	}
 	$_pf           = new WC_Product_Factory();
 	$product      = $_pf->get_product( $id );
-	$keys = [
-
-	];
-	$author = '';
+	$html = [];
 	if($product) {
-		$product->get_attributes();
-		$author = $product->get_attribute( 'pa_autor' );
+		foreach($keys as $key) {
+			$key = 'pa_'.$key;
+			$value = $product->get_attribute( $key );
+			if($value) {
+				$html[] = '<div class="'.$key.'">'.$product->get_attribute( $key ).'</div>';
+			}
+		}
 	}
-	return $author;
-
+	return implode("\n", $html);
 } );
 
 
@@ -73,6 +85,8 @@ function mi_show_attributes() {
 	$atts = implode( '<br>', $arrAtt );
 	echo( '<div class="mi-sp-attr">' . $atts . '</div>' );
 }
+
+//l
 
 
 add_action('astra_woo_shop_title_after', function() {

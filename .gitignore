@@ -1,0 +1,10 @@
+ehthumbs.db
+Thumbs.db
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+*.scssc
+.sass-cache/

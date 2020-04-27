@@ -9,7 +9,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: eriksbuchregal-theme
 Template: astra
 */
-.woocommerce-page.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap, .woocommerce.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap { padding-top: 0; flex: 4; align-self: flex-start; }
+.woocommerce-page.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap, .woocommerce.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap { padding-top: 0; flex: 5; align-self: flex-start; }
 
 .mnc-author { font-size: smaller; margin-bottom: 10px; }
 

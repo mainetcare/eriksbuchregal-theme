@@ -61,8 +61,8 @@ a > h2, a > h3, a > h4, a > h5 {
   float: none;
 }
 
-.site-header .ast-site-header-cart-data .button.wc-forward, .site-header .ast-site-header-cart-data .button.wc-forward:hover {
-  background-color: $color_red_dark;
+.site-header .ast-site-header-cart-data .button.wc-forward:hover {
+  background-color: $color_red_dark !important;
 }
 
 .jde_hint {

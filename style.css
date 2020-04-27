@@ -23,7 +23,7 @@ a > h2:hover, a > h3:hover, a > h4:hover, a > h5:hover { color: #5e1f29; }
 .cn-button.bootstrap { color: #fff; background: #a72e32; }
 .cn-button.bootstrap:hover { background-color: #5e1f29; }
 
-.woocommerce-page.woocommerce-checkout form #order_review_heading { width: 100%; float: none; }
+.woocommerce-page.woocommerce-checkout form #order_review_heading { width: 100%; float: none; border: none !important; padding: 1.5em 0; }
 
 .site-header .ast-site-header-cart-data .button.wc-forward:hover { background-color: #5e1f29 !important; }
 

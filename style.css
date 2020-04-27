@@ -17,3 +17,8 @@ Template: astra
 
 a > h2, a > h3, a > h4, a > h5 { color: #a72e32; }
 a > h2:hover, a > h3:hover, a > h4:hover, a > h5:hover { color: #5e1f29; }
+
+#order_review_heading { float: none; width: auto; }
+
+.cn-button.bootstrap { color: #fff; background: #a72e32; }
+.cn-button.bootstrap:hover { background-color: #5e1f29; }

@@ -43,3 +43,16 @@ a > h2, a > h3, a > h4, a > h5 {
   }
 }
 
+#order_review_heading {
+  float:none;
+  width:auto;
+}
+
+.cn-button.bootstrap {
+  color: #fff;
+  background: $color_red;
+  &:hover {
+    background-color: $color_red_dark;
+  }
+}
+

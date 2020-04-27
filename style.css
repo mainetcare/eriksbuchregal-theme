@@ -34,5 +34,3 @@ a > h2:hover, a > h3:hover, a > h4:hover, a > h5:hover { color: #5e1f29; }
 .mnc-col-br { border-right: 1px solid rgba(255, 255, 255, 0.7); }
 
 .mnc-footer .uabb-info-list-content-wrapper.uabb-info-list-left .uabb-info-list-icon { margin-right: 5px; }
-
-.main-header-bar { background-color: #fff; border-bottom-color: transparent; border-bottom-style: none; }

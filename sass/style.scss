@@ -61,5 +61,19 @@ a > h2, a > h3, a > h4, a > h5 {
   float: none;
 }
 
+.site-header .ast-site-header-cart-data .button.wc-forward, .site-header .ast-site-header-cart-data .button.wc-forward:hover {
+  color: $color_red_dark;
+}
+
+.jde_hint {
+  text-align: left;
+  a {
+    color:$color_red !important;
+    &:hover {
+      color:$color_red_dark !important;
+    }
+  }
+}
+
 
 

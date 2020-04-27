@@ -24,3 +24,9 @@ a > h2:hover, a > h3:hover, a > h4:hover, a > h5:hover { color: #5e1f29; }
 .cn-button.bootstrap:hover { background-color: #5e1f29; }
 
 .woocommerce-page.woocommerce-checkout form #order_review_heading { width: 100%; float: none; }
+
+.site-header .ast-site-header-cart-data .button.wc-forward, .site-header .ast-site-header-cart-data .button.wc-forward:hover { color: #5e1f29; }
+
+.jde_hint { text-align: left; }
+.jde_hint a { color: #a72e32 !important; }
+.jde_hint a:hover { color: #5e1f29 !important; }

@@ -13,6 +13,8 @@ Template: astra
 /*
 * Beschreibung größer (1:4) */
 .woocommerce-page.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap, .woocommerce.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap { padding-top: 0; flex: 5; align-self: flex-start; }
+@media (max-width: 767px) { .woocommerce-page.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap, .woocommerce.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap { flex: 3; } }
+.woocommerce-page.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap .ast-woo-product-category, .woocommerce.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap .ast-woo-product-category { font-size: smaller; line-height: 1em; display: inline-block; border: 1px solid rgba(58, 58, 58, 0.6); border-radius: 5px; padding: 2px 4px; }
 
 /**
 Autorenzeile in Shop-Archiv: */
@@ -24,6 +26,15 @@ Autorenzeile in Shop-Archiv: */
 Shop Archiv: Links alle in Rot */
 a > h2, a > h3, a > h4, a > h5 { color: #a72e32; }
 a > h2:hover, a > h3:hover, a > h4:hover, a > h5:hover { color: #5e1f29; }
+
+.mnc-badges-container { font-size: smaller; }
+.mnc-badges-container .fl-html > span { padding-right: 10px; }
+
+.mnc-badges { list-style: none; display: inline-flex; display: -webkit-inline-flex; margin: 0; }
+@media (max-width: 767px) { .mnc-badges { display: inline-block; } }
+.mnc-badges li { float: left; margin-right: 10px; }
+.mnc-badges li a { border: 1px solid #a72e32; border-radius: 5px; padding: 2px 4px; }
+.mnc-badges li.active a, .mnc-badges li.current-menu-item a { background-color: #a72e32; color: #FFF; }
 
 #order_review_heading { float: none; width: auto; }
 

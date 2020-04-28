@@ -17,8 +17,10 @@ $color_hover:$color_red_dark;
 
 @import "mi_mixins";
 @import "product_archive";
+@import "badges";
 @import "product_checkout";
 @import "footer";
+
 
 h2,h3, .site-title, .menu-text {
   text-transform: uppercase;

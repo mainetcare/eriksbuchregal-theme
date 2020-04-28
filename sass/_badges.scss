@@ -1,0 +1,32 @@
+.mnc-badges-container {
+  font-size:smaller;
+  .fl-html > span {
+    padding-right:10px;
+  }
+}
+
+.mnc-badges {
+  list-style: none;
+  display:inline-flex;
+  display: -webkit-inline-flex;
+  @include bp(mobile) {
+    display:inline-block;
+  }
+  margin:0;
+  li {
+    float:left;
+    margin-right:10px;
+    // font-size: smaller;
+    a {
+      border:1px solid $color_red;
+      border-radius: 5px;
+      padding:2px 4px;
+    }
+  }
+  li.active a, li.current-menu-item a {
+    background-color: $color_red;
+    // border-color:$color_red_dark;
+    color:#FFF;
+  }
+}
+

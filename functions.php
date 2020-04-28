@@ -24,6 +24,23 @@ function child_enqueue_styles() {
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
 
+add_shortcode( 'mnc-badgemenu', function ( $atts ) {
+
+	$atts          = shortcode_atts( array(
+		'menu' => 'main',
+	), $atts, 'mnc-badgemenu' );
+	$menu = $atts['menu'];
+	return wp_nav_menu( [
+		'menu'              => $menu, // (int|string|WP_Term) Desired menu. Accepts a menu ID, slug, name, or object.
+		'menu_class'        => "mnc-badges", // (string) CSS class to use for the ul element which forms the menu. Default 'menu'.
+		'container'         => "span", // (string) Whether to wrap the ul, and what to wrap it with. Default 'div'.
+		'container_class'   => "mnc-badges-menu-container", // (string) Class that is applied to the container. Default 'menu-{menu slug}-container'.
+		'echo'              => false, // (bool) Whether to echo the menu or return it. Default true.
+		'depth'             => "1", // (int) How many levels of the hierarchy are to be included. 0 means all. Default 0.
+	] );
+
+});
+
 
 /**
  * Liefert eine Liste mit definierten eigenen Produkt-Attributen

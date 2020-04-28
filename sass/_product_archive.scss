@@ -5,7 +5,18 @@
 .woocommerce.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap {
   padding-top:0;
   flex: 5;
+  @include bp(mobile) {
+    flex:3;
+  }
   align-self: flex-start;
+  .ast-woo-product-category {
+    font-size:smaller;
+    line-height:1em;
+    display:inline-block;
+    border:1px solid rgba(58,58,58,0.6);
+    border-radius: 5px;
+    padding:2px 4px;
+  }
 }
 
 /**
@@ -32,3 +43,4 @@ a > h2, a > h3, a > h4, a > h5 {
     color:$color_red_dark;
   }
 }
+

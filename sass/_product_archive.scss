@@ -1,0 +1,34 @@
+/*
+* Beschreibung größer (1:4)
+ */
+.woocommerce-page.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap,
+.woocommerce.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap {
+  padding-top:0;
+  flex: 5;
+  align-self: flex-start;
+}
+
+/**
+Autorenzeile in Shop-Archiv:
+ */
+.mnc-author {
+  font-size:smaller;
+  margin-bottom:10px;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.woocommerce-page ul.products li.product .woocommerce-loop-product__title,
+.wc-block-grid .wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-title {
+  margin-bottom:0;
+  letter-spacing:normal;
+}
+
+/**
+Shop Archiv: Links alle in Rot
+ */
+a > h2, a > h3, a > h4, a > h5 {
+  color:$color_red;
+  &:hover {
+    color:$color_red_dark;
+  }
+}

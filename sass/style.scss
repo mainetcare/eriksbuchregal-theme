@@ -9,84 +9,42 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: eriksbuchregal-theme
 Template: astra
 */
-@import "mi_mixins";
-// @import "woocommerce";
-
 $color_red:#a72e32;
 $color_red_dark:#5e1f29;
 
 $color_link:$color_red;
 $color_hover:$color_red_dark;
 
+@import "mi_mixins";
+@import "product_archive";
+@import "product_checkout";
+@import "footer";
 
-.woocommerce-page.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap,
-.woocommerce.ast-woocommerce-shop-page-list-style ul.products li.product .astra-shop-summary-wrap {
-  // padding: .8em 1.2em;
-  padding-top:0;
-  flex: 5;
-  align-self: flex-start;
+h2,h3, .site-title, .menu-text {
+  text-transform: uppercase;
+  letter-spacing:0.1em;
 }
 
-.mnc-author {
-  font-size:smaller;
-  margin-bottom:10px;
+.mnc-upper {
+  text-transform:uppercase !important;
+  letter-spacing:0.1em;
 }
 
-.woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce-page ul.products li.product .woocommerce-loop-product__title {
-  margin-bottom:0;
+.fl-post-grid-title {
+  font-size:30px !important;
+  line-height:1.1em !important;
+  letter-spacing:0;
+  text-transform:none !important;
 }
 
-a > h2, a > h3, a > h4, a > h5 {
-  color:$color_red;
-  &:hover {
-    color:$color_red_dark;
-  }
+.ast-breadcrumbs-wrapper, .ast-breadcrumbs-wrapper a {
+  letter-spacing:0.1em;
 }
 
-#order_review_heading {
-  float:none;
-  width:auto;
-}
 
-.cn-button.bootstrap {
-  color: #fff;
-  background: $color_red;
-  &:hover {
-    background-color: $color_red_dark;
-  }
-}
-
-.woocommerce-page.woocommerce-checkout form #order_review_heading {
-  width: 100%;
-  float: none;
-  border:none !important;
-  padding: 1.5em 0;
-}
-
-.site-header .ast-site-header-cart-data .button.wc-forward:hover {
-  background-color: $color_red_dark !important;
-}
-
-.jde_hint {
-  text-align: left;
-  a {
-    color:$color_red !important;
-    &:hover {
-      color:$color_red_dark !important;
-    }
-  }
-}
-
-.mnc-col-br {
-  border-right:1px solid rgba(255,255,255,0.7);
-}
-
-.mnc-footer {
-  .uabb-info-list-content-wrapper.uabb-info-list-left .uabb-info-list-icon {
-    margin-right: 5px;
-  }
-}
-
+/**
+Breadcrumbs: Kein Rand unten:
+ */
 .ast-header-breadcrumb {
   border-bottom:0;
 }

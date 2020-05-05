@@ -44,3 +44,7 @@ a > h2, a > h3, a > h4, a > h5 {
   }
 }
 
+.stock .out-of-stock {
+  color:$color_red;
+}
+

@@ -27,6 +27,8 @@ Shop Archiv: Links alle in Rot */
 a > h2, a > h3, a > h4, a > h5 { color: #a72e32; }
 a > h2:hover, a > h3:hover, a > h4:hover, a > h5:hover { color: #5e1f29; }
 
+.stock .out-of-stock { color: #a72e32; }
+
 .mnc-badges-container { font-size: smaller; }
 .mnc-badges-container .fl-html > span { padding-right: 10px; }
 

@@ -53,6 +53,12 @@ Kasse: Fehlerkorrektur Überschrift (im Original Rechtsbündig!) */
 .jde_hint a { color: #a72e32 !important; }
 .jde_hint a:hover { color: #5e1f29 !important; }
 
+.mnc-prod-list h4 { font-size: 24px; letter-spacing: -0.2px; line-height: 1.2em; margin-bottom: 0; }
+.mnc-prod-list img { margin-bottom: 20px; }
+.mnc-prod-list .mnc-pl-autor { font-size: 14px; }
+.mnc-prod-list .mnc-pl-preis { font-family: "Neue Droschke", Verdana, Arial, sans-serif; font-size: 30px; }
+.mnc-prod-list .mnc-pl-info { font-size: 14px; line-height: 1.5em; }
+
 /**
 Footerzeile Spaltentrenner: */
 .mnc-col-br { border-right: 1px solid rgba(255, 255, 255, 0.7); }

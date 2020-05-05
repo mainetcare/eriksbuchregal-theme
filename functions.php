@@ -24,6 +24,7 @@ function child_enqueue_styles() {
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
 
+// Rendert die Produktkategorien zu einem Produkt als "Badges"
 add_shortcode( 'mnc-badgemenu', function ( $atts ) {
 
 	$atts          = shortcode_atts( array(
@@ -74,6 +75,43 @@ add_shortcode( 'mnc-product-attributes', function ( $atts ) {
 				$html[] = '<div class="'.$key.'">'.$product->get_attribute( $key ).'</div>';
 			}
 		}
+	}
+	return implode("\n", $html);
+} );
+
+// Stellt ein einzelnes Produkt für die Startseite dar:
+add_shortcode( 'mnc-prod', function ( $atts ) {
+	global $post;
+	$atts          = shortcode_atts( array(
+		'id' => '0',
+		'atts' => ''
+	), $atts, 'mnc-product-attributes' );
+	$id = $atts['id'];
+	$keys = explode(',', $atts['atts']);
+	if(count($keys) == 0) {
+		return '';
+	}
+	if(isset($post) && $post->post_type == 'product') {
+		$id = $post->ID;
+	}
+	$_pf           = new WC_Product_Factory();
+	$product      = $_pf->get_product( $id );
+	$html = [];
+	if($product) {
+		$img = $product->get_image();
+		$title = $product->get_title();
+		$link = $product->get_permalink();
+		$autor = $product->get_attribute('pa_autor');
+		$preis = number_format_i18n($product->get_price(), 2). '&nbsp;€';
+		$info = get_field('listinfo', $id);
+		$templ  = '<h4><a href="%s">%s</a></h4>';
+		$html[] = '<div class="mnc-prod-list">';
+		$html[] = ''.$img.'';
+		$html[] = ''.sprintf($templ, $link, $title).'';
+		$html[] = '<div class="mnc-pl-autor">'.$autor.'</div>';
+		$html[] = '<div class="mnc-pl-preis">'.$preis.'</div>';
+		$html[] = '<div class="mnc-pl-info">'.$info.'</div>';
+		$html[] = '</div>';
 	}
 	return implode("\n", $html);
 } );

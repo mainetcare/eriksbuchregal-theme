@@ -138,7 +138,11 @@ function mi_show_attributes() {
 		$seiten .= ' Seiten';
 	}
 	$arrAtt[] = $product->get_attribute( 'pa_verlag' );
-	$arrAtt[] = $product->get_attribute( 'pa_buchform' ) . ' / ' . $seiten;
+	if(strlen($seiten)) {
+		$arrAtt[] = $product->get_attribute( 'pa_buchform' ) . ' / ' . $seiten;
+	} else {
+		$arrAtt[] = $product->get_attribute( 'pa_buchform' );
+	}
 	$arrAtt[] = $product->get_attribute( 'pa_auflage' );
 	$isbn     = $product->get_attribute( 'pa_isbn' );
 	if ( $isbn ) {

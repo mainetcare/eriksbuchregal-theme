@@ -60,6 +60,9 @@ Kasse: Fehlerkorrektur Überschrift (im Original Rechtsbündig!) */
 .mnc-prod-list .mnc-pl-autor { font-size: 14px; }
 .mnc-prod-list .mnc-pl-preis { font-family: "Neue Droschke", Verdana, Arial, sans-serif; font-size: 30px; }
 .mnc-prod-list .mnc-pl-info { font-size: 14px; line-height: 1.5em; }
+.mnc-prod-list .price { font-family: "Neue Droschke", Verdana, Arial, sans-serif; font-size: 30px; line-height: 2em; }
+.mnc-prod-list .woocommerce-Price-currencySymbol { display: none; }
+.mnc-prod-list .woocommerce-Price-amount.amount:after { content: " €"; }
 
 /**
 Footerzeile Spaltentrenner: */

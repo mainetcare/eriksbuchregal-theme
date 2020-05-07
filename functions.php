@@ -134,16 +134,22 @@ add_action( 'woocommerce_single_product_summary', 'mi_show_attributes', 6 );
 function mi_show_attributes() {
 	global $product;
 	$seiten = $product->get_attribute( 'pa_seitenzahl' );
-	if ( is_string( $seiten ) && strpos( $seiten, 'Seiten' ) === false ) {
+	if ( is_string( $seiten ) && strpos( $seiten, 'Seiten' ) === false && $seiten != '') {
 		$seiten .= ' Seiten';
 	}
-	$arrAtt[] = $product->get_attribute( 'pa_verlag' );
+	$verlag = $product->get_attribute( 'pa_verlag' );
+	if($verlag) {
+		$arrAtt[] = $verlag;
+	}
 	if(strlen($seiten)) {
 		$arrAtt[] = $product->get_attribute( 'pa_buchform' ) . ' / ' . $seiten;
 	} else {
 		$arrAtt[] = $product->get_attribute( 'pa_buchform' );
 	}
-	$arrAtt[] = $product->get_attribute( 'pa_auflage' );
+	$auflage = $product->get_attribute( 'pa_auflage' );
+	if($auflage) {
+		$arrAtt[] = $auflage;
+	}
 	$isbn     = $product->get_attribute( 'pa_isbn' );
 	if ( $isbn ) {
 		$arrAtt[] = 'ISBN: ' . $product->get_attribute( 'pa_isbn' );
